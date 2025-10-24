@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Motor Insurance Wizard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l4 8H8l4-8zm0 20l-4-8h8l-4 8zM2 12l8 4V8l-8 4zm20 0l-8-4v8l8-4z" fill="currentColor"/></svg>
+      <span>Solarelle Insurance (Demo)</span>
+    </div>
+    <div class="user">
+      <svg width="18" height="18" viewBox="0 0 24 24"><path d="M12 12a5 5 0 100-10 5 5 0 000 10zm0 2c-4.418 0-8 2.239-8 5v1h16v-1c0-2.761-3.582-5-8-5z" fill="currentColor"/></svg>
+      <span>online user</span>
+    </div>
+  </header>
+
+  <!-- Progress -->
+  <div class="progress">
+    <div class="step" data-step="1">
+      <div class="dot"></div>
+      <div class="label">Owner Information</div>
+    </div>
+    <div class="line"></div>
+    <div class="step" data-step="2">
+      <div class="dot"></div>
+      <div class="label">Vehicle Information</div>
+    </div>
+    <div class="line"></div>
+    <div class="step" data-step="3">
+      <div class="dot"></div>
+      <div class="label">Payment</div>
+    </div>
+  </div>
+
+  <main class="container">
+    <!-- Step 1: Owner Information -->
+    <section class="panel" id="step-1">
+      <h2 class="sr-only">Owner information</h2>
+      <form id="owner-form" novalidate>
+        <div class="grid two">
+          <div class="field">
+            <label for="ownerName">Owner Name</label>
+            <input id="ownerName" name="ownerName" type="text" required/>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="idType">Identification Type</label>
+            <select id="idType" name="idType" required>
+              <option value="">-- Select --</option>
+              <option>National Identity Card</option>
+              <option>Driver's License</option>
+              <option>Passport</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="nicNumber">NIC Number</label>
+            <input id="nicNumber" name="nicNumber" type="text" required placeholder="AA12345 / 123456789V"/>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="address">Address</label>
+            <input id="address" name="address" type="text" required/>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="atoll">Atoll</label>
+            <select id="atoll" name="atoll" required>
+              <option value="">-- Select Atoll --</option>
+              <option>Kaafu</option>
+              <option>Haa Alif</option>
+              <option>Seenu</option>
+            </select>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="island">Island</label>
+            <select id="island" name="island" required>
+              <option value="">-- Select Island --</option>
+              <option>Male</option>
+              <option>Hulhumale</option>
+              <option>Addu</option>
+            </select>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="mobile">Mobile Number</label>
+            <input id="mobile" name="mobile" type="tel" placeholder="(960) 7xx xxxx" required/>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="you@example.com" required/>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn sec" id="owner-reset">
+            <svg width="16" height="16" viewBox="0 0 24 24"><path d="M12 5V1L7 6l5 5V7c3.309 0 6 2.691 6 6 0 1.293-.41 2.49-1.104 3.465l1.473 1.473A7.954 7.954 0 0020 13c0-4.411-3.589-8-8-8zm-6 2.535A7.954 7.954 0 004 13c0 4.411 3.589 8 8 8v4l5-5-5-5v4c-3.309 0-6-2.691-6-6 0-1.293.41-2.49 1.104-3.465L6 7.535z" fill="currentColor"/></svg>
+            Reset
+          </button>
+          <button type="submit" class="btn pri">Next</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Step 2: Vehicle Information -->
+    <section class="panel hidden" id="step-2">
+      <form id="vehicle-form" novalidate>
+        <div class="field">
+          <label for="vehicleType">Vehicle Type</label>
+          <select id="vehicleType" required>
+            <option value="">--Select Type--</option>
+            <option>Motorcycle 250 CC</option>
+            <option>Car</option>
+            <option>Van</option>
+            <option>Pickup</option>
+          </select>
+          <small class="error"></small>
+        </div>
+
+        <div class="field">
+          <label for="vehicleNumber">Vehicle Number</label>
+          <input id="vehicleNumber" type="text" placeholder="Eg: AA3245 / AQ2345" required/>
+          <small class="error"></small>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="ownerEcho">Owner</label>
+            <input id="ownerEcho" type="text" disabled/>
+          </div>
+          <div class="field">
+            <label for="premium">Premium</label>
+            <input id="premium" type="number" min="0" step="0.01" placeholder="MVR 0.00" required/>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="issuingDate">Issuing Date</label>
+            <input id="issuingDate" type="date" required/>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="proposalNumber">Proposal Number</label>
+            <input id="proposalNumber" type="text"/>
+          </div>
+        </div>
+
+        <div class="grid two">
+          <div class="field">
+            <label for="periodFrom">Period From</label>
+            <input id="periodFrom" type="date" required/>
+            <small class="error"></small>
+          </div>
+          <div class="field">
+            <label for="periodTo">Period To</label>
+            <input id="periodTo" type="date" required/>
+            <small class="error"></small>
+          </div>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn sec" data-nav="back">Back</button>
+          <button type="submit" class="btn pri">Next</button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Step 3: Review & Payment -->
+    <section class="panel hidden" id="step-3">
+      <div class="card" id="reviewCard">
+        <h3>Third Party Motor Insurance</h3>
+        <dl class="kv">
+          <div><dt>Policy No.</dt><dd id="r-policy">—</dd></div>
+          <div><dt>Period from</dt><dd id="r-from">—</dd></div>
+          <div><dt>Period to</dt><dd id="r-to">—</dd></div>
+          <div><dt>Vehicle</dt><dd id="r-vehicle">—</dd></div>
+          <div><dt>Premium</dt><dd id="r-premium">—</dd></div>
+          <div><dt>Customer</dt><dd id="r-customer">—</dd></div>
+          <div><dt>Contact</dt><dd id="r-contact">—</dd></div>
+        </dl>
+      </div>
+
+      <div class="actions">
+        <button type="button" class="btn sec" data-nav="back">Back</button>
+        <button type="button" class="btn alt" id="useCredit">Use Credit</button>
+        <button type="button" class="btn pri" id="payNow">Pay Now</button>
+      </div>
+    </section>
+
+    <!-- Step 4: Success / Receipt -->
+    <section class="panel hidden" id="step-4">
+      <div class="success">
+        <div class="checkmark">✓</div>
+        <h2>Payment Successful, Thank You!</h2>
+        <div class="card">
+          <h3>Third Party Motor Insurance</h3>
+          <a id="receiptPolicy" class="policy-link" href="#" onclick="return false;">—</a>
+          <dl class="kv">
+            <div><dt>Policy Ref</dt><dd id="s-policy">—</dd></div>
+            <div><dt>Period from</dt><dd id="s-from">—</dd></div>
+            <div><dt>Period to</dt><dd id="s-to">—</dd></div>
+            <div><dt>Vehicle</dt><dd id="s-vehicle">—</dd></div>
+            <div><dt>Premium</dt><dd id="s-premium">—</dd></div>
+            <div><dt>Customer</dt><dd id="s-customer">—</dd></div>
+            <div><dt>Contact</dt><dd id="s-contact">—</dd></div>
+          </dl>
+        </div>
+
+        <div class="actions center">
+          <button class="btn pri" id="printReceipt">Print</button>
+          <button class="btn sec" id="goHome">Home</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Payment modal -->
+  <dialog id="payModal">
+    <form method="dialog" class="modal">
+      <div class="modal-head">
+        <h4>Select Payment Method</h4>
+        <button class="x" value="cancel" aria-label="Close">×</button>
+      </div>
+      <div class="methods">
+        <button class="pay-card" value="card">
+          <div class="tile">
+            <svg width="64" height="64" viewBox="0 0 24 24"><path d="M2 6h20v12H2z" fill="#d33"/><path d="M2 9h20v2H2z" fill="#fff"/></svg>
+            <span>Pay by Card</span>
+          </div>
+        </button>
+        <button class="pay-card" value="mfaisaa">
+          <div class="tile">
+            <svg width="64" height="64" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#2b7"/><rect x="7" y="8" width="10" height="8" rx="2" fill="#fff"/></svg>
+            <span>m-Faisaa</span>
+          </div>
+        </button>
+      </div>
+    </form>
+  </dialog>
+
+  <footer class="footer">
+    <div class="devbar">
+      <span>Demo • Open index.html in your browser</span>
+      <span>Page <strong id="pageNo">1</strong></span>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
